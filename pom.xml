@@ -7,6 +7,9 @@
     <artifactId>biao</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <test.env>qa</test.env>
+    </properties>
 
     <build>
         <plugins>
@@ -18,6 +21,11 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+
+                    <systemPropertyVariables>
+                        <testEnv>${test.env}}</testEnv>
+                        <buildDirectory>${project.build.directory}</buildDirectory>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
