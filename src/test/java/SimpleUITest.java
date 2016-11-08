@@ -2,7 +2,7 @@ import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -19,13 +19,16 @@ public class SimpleUITest {
     @Test
     public void aWebTest() throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "Tools/Mac/chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "Tools/Mac/chromedriver");
+        System.setProperty("phantomjs.binary.path", "Tools/Mac/phantomjs");
 
-        driver = new ChromeDriver();
+//        driver = new ChromeDriver();
+        driver = new PhantomJSDriver();
         wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
 
         driver.get("https://www.baidu.com/");
         driver.findElement(By.id("kw")).sendKeys("test");
+        System.out.println(driver.getTitle());
         driver.findElement(By.id("su")).click();
         waitForPageLoad();
         wait.until(ExpectedConditions.titleContains("test"));
