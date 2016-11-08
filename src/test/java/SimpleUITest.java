@@ -6,6 +6,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,19 +17,19 @@ public class SimpleUITest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @Test
-    public void aWebTest() throws InterruptedException {
 
-//        System.setProperty("webdriver.chrome.driver", "Tools/Mac/chromedriver");
+    @BeforeClass
+    public void setUp() {
         System.setProperty("phantomjs.binary.path", "Tools/Mac/phantomjs");
-
-//        driver = new ChromeDriver();
         driver = new PhantomJSDriver();
         wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
+    }
 
+
+    @Test
+    public void aWebTest() throws InterruptedException {
         driver.get("https://www.baidu.com/");
         driver.findElement(By.id("kw")).sendKeys("test");
-        System.out.println(driver.getTitle());
         driver.findElement(By.id("su")).click();
         waitForPageLoad();
         wait.until(ExpectedConditions.titleContains("test"));
