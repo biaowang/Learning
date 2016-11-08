@@ -38,6 +38,17 @@
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
+                    <properties>
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value>
+                        </property>
+                        <property>
+                            <name>listener</name>
+                            <value>Utils.MyTestListener</value>
+                        </property>
+                    </properties>
+
                     <systemPropertyVariables>
                         <testEnv>${test.env}}</testEnv>
                         <buildDirectory>${project.build.directory}</buildDirectory>
