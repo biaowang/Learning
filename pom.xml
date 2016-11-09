@@ -17,12 +17,10 @@
                 </property>
             </activation>
         </profile>
-
         <profile>
             <id>UAT</id>
         </profile>
     </profiles>
-
     <properties>
         <test.env>qa</test.env>
     </properties>
@@ -52,6 +50,7 @@
                     <systemPropertyVariables>
                         <testEnv>${test.env}}</testEnv>
                         <buildDirectory>${project.build.directory}</buildDirectory>
+                        <screenshotFilePath>target\surefire-reports\screenshots</screenshotFilePath>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

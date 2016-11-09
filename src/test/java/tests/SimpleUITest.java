@@ -22,10 +22,11 @@ public class SimpleUITest extends WebBrowser {
     @Test
     public void aWebTest() throws InterruptedException {
         driver.get(BaiduHomePage.URL);
-        baiduHomePage.TypeSearchKeyWord(driver, BaiduHomePage.searchKeyword);
-        baiduHomePage.clickSearch(driver);
-        wait.until(ExpectedConditions.titleContains(BaiduHomePage.searchKeyword));
-        assertThat("Result page not contains search keyword", driver.getTitle().contains(BaiduHomePage.searchKeyword));
+        String searchWord = "test";
+        baiduHomePage.TypeSearchKeyWord(searchWord);
+        baiduHomePage.clickSearch();
+        wait.until(ExpectedConditions.titleContains(searchWord));
+        assertThat("Result page not contains search keyword", driver.getTitle().contains(searchWord));
     }
 
 

@@ -10,19 +10,15 @@ import java.io.IOException;
 
 public class TestUtils {
 
-    private static String screenshotFilePath = "target\\surefire-reports\\screenshots";
-
     public static void takeScreenshot(String fileName) {
 
         WebDriver driver = WebBrowser.driver;
 
         try {
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(srcFile, new File(screenshotFilePath + fileName + ".png"));
+            FileUtils.copyFile(srcFile, new File(System.getProperty("screenshotFilePath") + fileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
