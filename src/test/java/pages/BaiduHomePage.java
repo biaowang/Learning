@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class BaiduHomePage {
 
-    public static final long TIME_OUT_IN_SECONDS = 10;
     public static String URL = "https://www.baidu.com/";
     public static String searchKeyword = "test";
 
@@ -20,11 +19,11 @@ public class BaiduHomePage {
     private static WebElement search_textbox;
 
 
-    public static void TypeSearchKeyWord(WebDriver driver, String searchKeyword) {
+    public void TypeSearchKeyWord(WebDriver driver, String searchKeyword) {
         search_textbox.sendKeys(searchKeyword);
     }
 
-    public static void clickSearch(WebDriver driver) {
+    public void clickSearch(WebDriver driver) {
         search_button.click();
     }
 }
