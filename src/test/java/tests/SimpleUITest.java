@@ -25,7 +25,7 @@ public class SimpleUITest extends WebBrowser {
         baiduHomePage.TypeSearchKeyWord(driver, BaiduHomePage.searchKeyword);
         baiduHomePage.clickSearch(driver);
         wait.until(ExpectedConditions.titleContains(BaiduHomePage.searchKeyword));
-        assertThat("Result page contains search keyword", driver.getTitle().contains(BaiduHomePage.searchKeyword));
+        assertThat("Result page not contains search keyword", driver.getTitle().contains(BaiduHomePage.searchKeyword));
     }
 
 
