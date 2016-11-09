@@ -1,5 +1,4 @@
 import com.google.common.base.Function;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -28,9 +27,9 @@ public class SimpleUITest {
 
     @Test
     public void aWebTest() throws InterruptedException {
-        driver.get(BaiduHomePage.testURL);
-        driver.findElement(By.id(BaiduHomePage.SEARCH_TEXTBOX_ID)).sendKeys(BaiduHomePage.searchKeyword);
-        driver.findElement(By.id(BaiduHomePage.SEARCH_BUTTON_ID)).click();
+        driver.get(BaiduHomePage.URL);
+        BaiduHomePage.TypeSearchKeyWord(driver, BaiduHomePage.searchKeyword);
+        BaiduHomePage.clickSearch(driver);
         wait.until(ExpectedConditions.titleContains(BaiduHomePage.searchKeyword));
         assertThat("Result page contains search keyword", driver.getTitle().contains(BaiduHomePage.searchKeyword));
     }
