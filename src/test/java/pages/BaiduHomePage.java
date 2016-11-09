@@ -1,7 +1,8 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class BaiduHomePage {
 
@@ -9,14 +10,21 @@ public class BaiduHomePage {
     public static String URL = "https://www.baidu.com/";
     public static String searchKeyword = "test";
 
-    private static String SEARCH_BUTTON_ID = "su";
-    private static String SEARCH_TEXTBOX_ID = "kw";
+    private static final String SEARCH_BUTTON_ID = "su";
+    private static final String SEARCH_TEXTBOX_ID = "kw";
+
+    @FindBy(id = SEARCH_BUTTON_ID)
+    private static WebElement search_button;
+
+    @FindBy(id = SEARCH_TEXTBOX_ID)
+    private static WebElement search_textbox;
+
 
     public static void TypeSearchKeyWord(WebDriver driver, String searchKeyword) {
-        driver.findElement(By.id(SEARCH_TEXTBOX_ID)).sendKeys(searchKeyword);
+        search_textbox.sendKeys(searchKeyword);
     }
 
     public static void clickSearch(WebDriver driver) {
-        driver.findElement(By.id(SEARCH_BUTTON_ID)).click();
+        search_button.click();
     }
 }

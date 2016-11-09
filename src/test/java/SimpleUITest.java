@@ -2,6 +2,7 @@ import com.google.common.base.Function;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -23,6 +24,7 @@ public class SimpleUITest {
         System.setProperty("phantomjs.binary.path", phantomJSDriverPath);
         driver = new PhantomJSDriver();
         wait = new WebDriverWait(driver, BaiduHomePage.TIME_OUT_IN_SECONDS);
+        BaiduHomePage baiduHomePage = PageFactory.initElements(driver, BaiduHomePage.class);
     }
 
     @Test
