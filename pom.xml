@@ -21,8 +21,10 @@
             <id>UAT</id>
         </profile>
     </profiles>
+
     <properties>
         <test.env>qa</test.env>
+        <brand>myBrand</brand>
     </properties>
 
     <build>
@@ -52,8 +54,10 @@
                     </properties>
 
                     <systemPropertyVariables>
+                        <brand>${brand}</brand>
                         <testEnv>${test.env}}</testEnv>
                         <buildDirectory>${project.build.directory}</buildDirectory>
+                        <org.uncommons.reportng.title>${brand} - ${test.env} Test Report</org.uncommons.reportng.title>
                         <screenshotFilePath>target\surefire-reports\screenshots</screenshotFilePath>
                     </systemPropertyVariables>
                 </configuration>
